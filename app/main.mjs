@@ -43,7 +43,11 @@ function installTelemetryShim() {
   fs.copyFileSync(shim, target);
 }
 
-installTelemetryShim();
+try {
+  installTelemetryShim();
+} catch (e) {
+  console.log(`telemetry shim: not (re)installed (${e.message}); using the one that is there`);
+}
 const { default: tst } = await import('trucksim-telemetry');
 
 /** Full parsed telemetry (every property the plugin has), or null while no game runs. */

@@ -35,6 +35,11 @@ Step 'app dependencies (no dev packages, no native builds)'
 Push-Location $Root
 try { Exec { npm ci --omit=dev --ignore-scripts --no-audit --no-fund } 'npm ci' } finally { Pop-Location }
 
+Step 'telemetry shim (stands in for the native addon)'
+$shimDir = Join-Path $Root 'node_modules\trucksim-telemetry\build\Release'
+New-Item -ItemType Directory -Force $shimDir | Out-Null
+Copy-Item "$Root\app\scsSDKTelemetry.cjs" (Join-Path $shimDir 'scsSDKTelemetry.js')
+
 Step 'Node.js runtime'
 $base = 'https://nodejs.org/dist/latest-v24.x'
 $sums = (Invoke-WebRequest -UseBasicParsing "$base/SHASUMS256.txt").Content

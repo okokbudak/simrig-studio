@@ -93,8 +93,7 @@ Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 Filename: "{app}\SimRigStudio.exe"; Parameters: "--install-plugin"; Flags: runhidden; Tasks: plugin; StatusMsg: "{cm:StatusPlugin}"
 Filename: "{app}\SimRigStudio.exe"; Description: "{cm:LaunchProgram,SimRig Studio}"; Flags: nowait postinstall skipifsilent runasoriginaluser
 
-[UninstallRun]
-; the telemetry plugin stays in the games: other telemetry tools use the same one
+; (the telemetry plugin stays in the games: other telemetry tools use the same one)
 
 [Code]
 const
