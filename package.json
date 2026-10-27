@@ -1,0 +1,16 @@
+{
+  "name": "simrig-studio",
+  "private": true,
+  "type": "module",
+  "description": "SimRig Studio: formulas -> serial gauge boards, LEDs and Nextion displays for truck sims (ETS2 / ATS)",
+  "main": "app/main.mjs",
+  "scripts": {
+    "start": "node app/main.mjs",
+    "demo": "node dev/studio-demo.mjs",
+    "test": "node dev/test-studio.mjs"
+  },
+  "dependencies": {
+    "trucksim-telemetry": "0.22.1",
+    "ws": "^8.18.0"
+  }
+}

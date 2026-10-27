@@ -1,6 +1,6 @@
 # Octopus Pro gösterge firmware'i (V1.0.1, STM32F446ZET6)
 
-6 gösterge motorunu (MOTOR0…MOTOR5) ve TFT konnektöründeki Nextion ekranını sürer. Verileri USB'den **Rig Buddy Studio** gönderir (SimHub Custom Serial de olur). Motor ayarları (yön, akım, skala, hız…) **kartın kendi flash'ında** durur ve Studio'nun **Kart** sayfasından yüklenir. Bunlar için firmware'i yeniden derlemek gerekmez.
+6 gösterge motorunu (MOTOR0…MOTOR5) ve TFT konnektöründeki Nextion ekranını sürer. Verileri USB'den **SimRig Studio** gönderir (SimHub Custom Serial de olur). Motor ayarları (yön, akım, skala, hız…) **kartın kendi flash'ında** durur ve Studio'nun **Kart** sayfasından yüklenir. Bunlar için firmware'i yeniden derlemek gerekmez.
 
 ## Klasörler
 | Yol | Ne |

@@ -1,7 +1,7 @@
 # Dashboard hardware
 
-The hardware side of Rig Buddy Studio: a gauge controller for analog dashboard needles and a Nextion touch display.
-Rig Buddy Studio (the Studio page of the PC app) drives both over USB; see the main README.
+The hardware side of SimRig Studio: a gauge controller for analog dashboard needles and a Nextion touch display.
+SimRig Studio drives both over USB; see the README.
 
 ## What is here
 
@@ -30,8 +30,8 @@ Rig Buddy Studio (the Studio page of the PC app) drives both over USB; see the m
 
 # Gösterge donanımı
 
-Rig Buddy Studio'nun donanım tarafı: analog gösterge ibreleri için bir kart ve bir Nextion dokunmatik ekran. İkisini de
-Rig Buddy Studio (PC uygulamasındaki Studio sayfası) USB'den sürer; ana README'ye bakın.
+SimRig Studio'nun donanım tarafı: analog gösterge ibreleri için bir kart ve bir Nextion dokunmatik ekran. İkisini de
+SimRig Studio USB'den sürer; README'ye bakın.
 
 | Klasör | Ne |
 |---|---|

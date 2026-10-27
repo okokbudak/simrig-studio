@@ -38,7 +38,7 @@ const PINSTR = {
 };
 for (const [k, [tr, en]] of Object.entries(PINSTR)) { STRINGS.tr[k] = tr; STRINGS.en[k] = en; }
 
-// [name, mcu pin, capabilities (1 out, 2 pwm, 4 in, 8 adc), group]: the same table as pc/agent/studio/pins.mjs
+// [name, mcu pin, capabilities (1 out, 2 pwm, 4 in, 8 adc), group]: the same table as app/pins.mjs
 const UI_PINS = [
   ['FAN1', 'PE5', 3, 'fan'], ['FAN2', 'PD12', 3, 'fan'], ['FAN3', 'PD13', 3, 'fan'], ['FAN4', 'PD14', 3, 'fan'], ['FAN5', 'PD15', 3, 'fan'],
   ['HE0', 'PA2', 3, 'heater'], ['HE1', 'PA3', 3, 'heater'], ['HE2', 'PB10', 3, 'heater'], ['HE3', 'PB11', 3, 'heater'], ['BED', 'PA1', 3, 'heater'],

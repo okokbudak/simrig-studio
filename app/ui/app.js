@@ -1,5 +1,5 @@
 'use strict';
-// Rig Buddy Studio page. No framework: render functions build a page once, paint functions
+// SimRig Studio page. No framework: render functions build a page once, paint functions
 // update the live parts (needles, values, states) from the WebSocket without touching inputs.
 // Texts live in i18n.js (t(), PRESETS, LANG).
 

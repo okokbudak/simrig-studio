@@ -1,4 +1,4 @@
-// Rig Buddy Studio: the configuration page (http://127.0.0.1:62850/).
+// SimRig Studio: the configuration page (http://127.0.0.1:62870/).
 // Local only: it listens on the loopback address, answers only to its own
 // address as Host (DNS rebinding) and its own origin, and every change needs a
 // custom header a foreign web page can't send without our consent (CSRF).
@@ -12,7 +12,7 @@ import { PINS } from './pins.mjs';
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png' };
 const MAX_BODY = 1024 * 1024; // a configuration with many LED presets is a few hundred KB
 
-export function startStudio({ engine, hub, port = Number(process.env.RIGBUDDY_STUDIO_PORT || 62850) }) {
+export function startStudio({ engine, hub, port = Number(process.env.SIMRIG_STUDIO_PORT || 62870) }) {
   const uiDir = path.join(import.meta.dirname, 'ui');
   const hosts = new Set([`127.0.0.1:${port}`, `localhost:${port}`]);
   const sameOrigin = req => hosts.has(String(req.headers.host).toLowerCase()) && (req.headers.origin == null || req.headers.origin === `http://${req.headers.host}`);
@@ -161,6 +161,6 @@ export function startStudio({ engine, hub, port = Number(process.env.RIGBUDDY_ST
   });
 
   server.on('error', e => console.warn(`Studio: cannot listen on ${port}: ${e.message}`));
-  server.listen(port, '127.0.0.1', () => console.log(`Rig Buddy Studio on http://127.0.0.1:${port}/`));
+  server.listen(port, '127.0.0.1', () => console.log(`SimRig Studio on http://127.0.0.1:${port}/`));
   return server;
 }

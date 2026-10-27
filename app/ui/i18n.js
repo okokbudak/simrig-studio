@@ -1,5 +1,5 @@
 'use strict';
-// Rig Buddy Studio texts, Turkish and English. t('key', {name: 'x'}) fills {name}.
+// SimRig Studio texts, Turkish and English. t('key', {name: 'x'}) fills {name}.
 
 const STRINGS = {
   tr: {
@@ -124,10 +124,10 @@ const STRINGS = {
     'tab.connections': 'Bağlantılar',
     'tab.data': 'Oyun verileri',
 
-    'pill.agent': "Rig Buddy'ye ulaşılamıyor",
+    'pill.agent': "SimRig Studio'ya ulaşılamıyor",
     'pill.gameOn': 'Oyun çalışıyor',
     'pill.gameOff': 'Oyun kapalı',
-    'pill.hubOff': 'Seri portlar kullanılamıyor (RigBuddy.exe kapalı)',
+    'pill.hubOff': 'Seri portlar kullanılamıyor (SimRigStudio.exe kapalı)',
     'state.open': 'Bağlı',
     'state.connecting': 'Bağlanıyor…',
     'state.error': 'Sorun var',
@@ -424,10 +424,10 @@ const STRINGS = {
     'tab.connections': 'Connections',
     'tab.data': 'Game data',
 
-    'pill.agent': 'Can\'t reach Rig Buddy',
+    'pill.agent': 'Can\'t reach SimRig Studio',
     'pill.gameOn': 'Game running',
     'pill.gameOff': 'Game closed',
-    'pill.hubOff': 'Serial ports unavailable (RigBuddy.exe is closed)',
+    'pill.hubOff': 'Serial ports unavailable (SimRigStudio.exe is closed)',
     'state.open': 'Connected',
     'state.connecting': 'Connecting…',
     'state.error': 'Problem',

@@ -5,12 +5,12 @@ import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { createEngine, normalize } from '../pc/agent/studio/engine.mjs';
-import { createRenderer, EFFECTS } from '../pc/agent/studio/leds.mjs';
-import { PINS, normalizePins, pinConfigCommand, pinOutputValue } from '../pc/agent/studio/pins.mjs';
-import { hasPins, hasLedFrames, normalizeLeds, ledCommand, parseCfg, parseHello, normalizeMotor, motorCommand, motorDiff, hasHomeOffset, hasIdle, normalizeSleep, idleCommand } from '../pc/agent/studio/board.mjs';
-import { compile, FormulaError } from '../pc/agent/studio/expr.mjs';
-import { catalog, read } from '../pc/agent/studio/props.mjs';
+import { createEngine, normalize } from '../app/engine.mjs';
+import { createRenderer, EFFECTS } from '../app/leds.mjs';
+import { PINS, normalizePins, pinConfigCommand, pinOutputValue } from '../app/pins.mjs';
+import { hasPins, hasLedFrames, normalizeLeds, ledCommand, parseCfg, parseHello, normalizeMotor, motorCommand, motorDiff, hasHomeOffset, hasIdle, normalizeSleep, idleCommand } from '../app/board.mjs';
+import { compile, FormulaError } from '../app/expr.mjs';
+import { catalog, read } from '../app/props.mjs';
 
 const raw = {
   truck: { speed: { kph: 87.4 }, engine: { rpm: { value: 1500, max: 2500 }, enabled: true }, fuel: { value: 200, capacity: 400 }, adBlue: { value: 20, capacity: 100 }, brakes: { airPressure: { value: 100 } } },
@@ -160,14 +160,14 @@ const NX = {
   ],
 };
 {
-  const { createNextion, normalizeNextion, parseTarget, directFrames } = await import('../pc/agent/studio/nextion.mjs');
+  const { createNextion, normalizeNextion, parseTarget, directFrames } = await import('../app/nextion.mjs');
   assert.deepEqual(parseTarget('page1.tgear.txt'), { page: 'page1', obj: 'tgear', attr: 'txt' });
   assert.equal(parseTarget('tgear.txt'), null);
   assert.equal(parseTarget('page1.t"x.txt'), null);
 
   const zero = (await import('node:module')).createRequire(import.meta.url);
-  const req = zero('../pc/agent/node_modules/trucksim-telemetry/lib/converter/index.js');
-  const parse = zero('../pc/agent/node_modules/trucksim-telemetry/lib/parser/parseData.js');
+  const req = zero('../node_modules/trucksim-telemetry/lib/converter/index.js');
+  const parse = zero('../node_modules/trucksim-telemetry/lib/parser/parseData.js');
   const live = parse(req.converter(12, Buffer.alloc(32768)));
   live.truck.speed.kph = 87; live.truck.fuel.value = 200; live.truck.fuel.capacity = 400; live.truck.fuel.range = 812.6;
   live.truck.transmission.gear.displayed = 9; live.game.time.value = 8 * 60 + 5; live.trailer.attached = true;
@@ -271,7 +271,7 @@ const NX = {
   assert.ok(createNextion(normalizeNextion([{ bindings: [{ target: 'bad', expr: '1' }] }], new Set())[0], nxOut).status().bindings[0].error);
 
   // transports: a display on its own COM port gets FF FF FF framed commands, one behind a pass-through board gets "@<command>" lines
-  const { tunnelLines, tunnelFrame, rgb565 } = await import('../pc/agent/studio/nextion.mjs');
+  const { tunnelLines, tunnelFrame, rgb565 } = await import('../app/nextion.mjs');
   assert.equal(directFrames(['a', 'b']).toString('latin1'), 'a\xff\xff\xffb\xff\xff\xff');
   assert.equal(tunnelLines(['page page1', 'bkcmd=0']).toString('latin1'), '@page page1\n@bkcmd=0\n');
   assert.deepEqual([...tunnelFrame('@88')], [0x88, 0xff, 0xff, 0xff]);

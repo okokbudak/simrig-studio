@@ -1,4 +1,4 @@
-// Client of RigBuddy.exe's serial hub (pc/host/SerialHub.cs, 127.0.0.1:62847):
+// Client of SimRigStudio.exe's serial hub (host/SerialHub.cs, 127.0.0.1:62872):
 // the PC app owns the COM ports (.NET has serial support built in; Node would
 // need a native addon), this module just says what to open and what to send.
 // Protocol: one JSON object per line, both directions.
@@ -11,7 +11,7 @@
 import net from 'node:net';
 import { EventEmitter } from 'node:events';
 
-const PORT = Number(process.env.RIGBUDDY_SERIAL_PORT || 62847);
+const PORT = Number(process.env.SIMRIG_SERIAL_PORT || 62872);
 
 export function createHub() {
   const events = new EventEmitter();
@@ -48,7 +48,7 @@ export function createHub() {
       const was = connected;
       connected = false;
       socket = null;
-      for (const resolve of waiting.values()) resolve({ error: 'RigBuddy.exe serial hub not reachable' });
+      for (const resolve of waiting.values()) resolve({ error: 'SimRigStudio.exe serial hub not reachable' });
       waiting.clear();
       if (was) events.emit('disconnected');
       setTimeout(connect, 2000).unref();
@@ -75,7 +75,7 @@ export function createHub() {
       const reqId = ++reqSeq;
       const timer = setTimeout(() => {
         waiting.delete(reqId);
-        resolve({ error: 'no answer from RigBuddy.exe' });
+        resolve({ error: 'no answer from SimRigStudio.exe' });
       }, timeoutMs);
       waiting.set(reqId, m => {
         clearTimeout(timer);
@@ -84,7 +84,7 @@ export function createHub() {
       if (!send({ ...obj, reqId })) {
         clearTimeout(timer);
         waiting.delete(reqId);
-        resolve({ error: 'RigBuddy.exe serial hub not reachable' });
+        resolve({ error: 'SimRigStudio.exe serial hub not reachable' });
       }
     });
   }

@@ -1,6 +1,6 @@
 # Dikey Scania ekranı (Nextion 272×480)
 
-Ekrandaki **değişen her şeyi Rig Buddy Studio çizer** (Nextion'un `xstr` / `xpic` / `fill` komutlarıyla). Nextion projesi sadece bir tuval: **resimler + fontlar + boş sayfalar**. Projede **hiç bileşen (text, picture, button…) yok**, dokunmatik sayfa geçişlerini de Studio yapar.
+Ekrandaki **değişen her şeyi SimRig Studio çizer** (Nextion'un `xstr` / `xpic` / `fill` komutlarıyla). Nextion projesi sadece bir tuval: **resimler + fontlar + boş sayfalar**. Projede **hiç bileşen (text, picture, button…) yok**, dokunmatik sayfa geçişlerini de Studio yapar.
 
 ## Dosyalar
 | Dosya | Ne |
@@ -18,7 +18,7 @@ node layout.mjs
 node preview-values.mjs
 powershell -ExecutionPolicy Bypass -File render.ps1
 ```
-İlk ikisi Ubuntu'da, `render.ps1` Windows PowerShell'de (System.Drawing) çalışır. `preview-values.mjs` Studio'nun formül motorunu depodan alır (`../../pc/agent/studio/expr.mjs`).
+İlk ikisi Ubuntu'da, `render.ps1` Windows PowerShell'de (System.Drawing) çalışır. `preview-values.mjs` Studio'nun formül motorunu depodan alır (`../../app/expr.mjs`).
 Değişen resimleri Nextion projesine yeniden ekle, değişen `studio-display.json`'ı Studio'ya uygula.
 
 ## Nextion Editor'de proje (bir kere, ~15 dk)

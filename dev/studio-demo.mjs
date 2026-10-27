@@ -4,8 +4,8 @@ import { EventEmitter } from 'node:events';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { createEngine } from '../pc/agent/studio/engine.mjs';
-import { startStudio } from '../pc/agent/studio/server.mjs';
+import { createEngine } from '../app/engine.mjs';
+import { startStudio } from '../app/server.mjs';
 
 const PORT = Number(process.env.PORT || 62898);
 const events = new EventEmitter();

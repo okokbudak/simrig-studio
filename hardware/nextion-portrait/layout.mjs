@@ -2,7 +2,7 @@
 // ONE source for both halves of the screen:
 //   - `bg` / `lit`: what render.ps1 draws into the page pictures (static labels, tracks, dim icons;
 //     `lit` = the same page with every lamp lit, cropped in by Studio when a lamp is on)
-//   - `widgets`: what Rig Buddy Studio draws at run time with xstr / xpic / fill
+//   - `widgets`: what SimRig Studio draws at run time with xstr / xpic / fill
 // `node layout.mjs` writes layout.json (for render.ps1) and studio-display.json (for Studio).
 import fs from 'node:fs';
 import path from 'node:path';

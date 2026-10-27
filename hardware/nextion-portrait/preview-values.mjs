@@ -3,8 +3,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-// Rig Buddy sits next to Simdash under "Ai Projects"
-import { compile } from '../../pc/agent/studio/expr.mjs';
+// SimRig Studio sits next to Simdash (archive) under "Ai Projects"
+import { compile } from '../../app/expr.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const st = JSON.parse(fs.readFileSync(path.join(here, 'studio-display.json'), 'utf8'));

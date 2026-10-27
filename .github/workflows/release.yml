@@ -1,0 +1,51 @@
+# Builds SimRigStudio-Setup.exe for a version tag (v1.2.3), as the workflow artifact "simrig-studio-<version>".
+# scripts/draft-release.sh (kept outside the repo) then makes the draft GitHub release from it with the maintainer's own
+# account (a release created here would show the github-actions bot as its author). Can also be run by hand
+# (Actions > release > Run workflow).
+name: release
+
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version (1.2.3)'
+        required: true
+        default: '0.0.0'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: windows-latest
+    env:
+      # the tag (v1.2.3) or the manual input; the "version" step turns it into APP_VERSION (1.2.3)
+      VERSION_INPUT: ${{ github.event_name == 'push' && github.ref_name || inputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: version
+        shell: pwsh
+        run: |
+          $v = $env:VERSION_INPUT -replace '^v', ''
+          if ($v -notmatch '^\d+\.\d+\.\d+$') { throw "bad version '$env:VERSION_INPUT'" }
+          "APP_VERSION=$v" >> $env:GITHUB_ENV
+      - name: npm install (tests need the dev tree as well)
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Inno Setup
+        shell: pwsh
+        run: if (-not (Test-Path "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) { choco install innosetup -y --no-progress }
+      - name: build
+        shell: pwsh
+        run: ./setup/build-release.ps1 -Version $env:APP_VERSION
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simrig-studio-${{ env.APP_VERSION }}
+          path: local/release/SimRigStudio-Setup.exe

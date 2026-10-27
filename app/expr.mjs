@@ -1,4 +1,4 @@
-// Formula language of Rig Buddy Studio: small, safe, no eval.
+// Formula language of SimRig Studio: small, safe, no eval.
 //
 //   truck.speed.kph * 10
 //   clamp(truck.fuel.value / max(truck.fuel.capacity, 1) * 100, 0, 100)
